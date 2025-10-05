@@ -1,0 +1,129 @@
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FDF8F0;
+    color: #3D352E;
+    scroll-behavior: smooth;
+    overflow-x: hidden; 
+    margin: 0; 
+    padding: 0;
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+
+.sidebar {
+    background-color: #FFFFFF;
+    min-height: 100vh;
+    width: 250px; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+}
+
+.nav-link {
+    transition: all 0.2s;
+    color: #3D352E;
+    padding: 0.5rem 1rem; 
+    display: block; 
+}
+
+.nav-link.active, .nav-link:hover {
+    color: #00778B;
+    background-color: #E6F3F5;
+    border-radius: 0.5rem;
+}
+
+/* Contenedor principal: El contenido que no es el sidebar */
+.main-content {
+    /* En desktop, el contenido se desplaza para dejar espacio al sidebar */
+    margin-left: 250px; 
+    padding: 2rem;
+}
+
+/* ====================================
+   Elementos de Interacción y Contenido
+   ==================================== */
+.project-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+.skill-tag {
+    transition: background-color 0.2s;
+    /* Añadir estilos base para tags (ejemplo) */
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    margin-right: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem; /* Usar rem para tamaño de fuente */
+}
+
+/* ====================================
+   Gráficos
+   ==================================== */
+.chart-container { 
+    position: relative; 
+    width: 100%; 
+    max-width: 600px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    /* Altura en pantallas pequeñas, puede ser un valor relativo como 60vw si es un cuadrado, 
+       pero 350px está bien si es un gráfico con alto fijo. */
+    height: 350px; 
+    max-height: 400px; 
+}
+
+/* ====================================
+   Media Queries: Puntos de Ruptura (Breakpoints)
+   ==================================== */
+
+/* --- Pantallas Extra-Pequeñas a Pequeñas (Móviles: hasta 767px) --- */
+@media (max-width: 767px) {
+    /* 1. Sidebar se convierte en barra superior (oculta o colapsada es otra opción) */
+    .sidebar {
+        width: 100%; /* Ocupa todo el ancho */
+        min-height: auto; /* Ya no es la altura de la vista */
+        position: static; /* Ya no está fijo, fluye con el contenido */
+        /* Opcional: Estilo horizontal para los nav-links */
+        display: flex; 
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 1rem 0;
+    }
+
+    /* 2. El contenido principal ya no necesita margen a la izquierda */
+    .main-content {
+        margin-left: 0;
+        padding: 1rem; /* Reducir el padding en móvil */
+    }
+
+    /* 3. Ajuste de los enlaces de navegación */
+    .nav-link {
+        text-align: center;
+        flex-grow: 1; /* Ocupa el espacio uniformemente si usas flex */
+    }
+
+    /* 4. Altura del gráfico ajustada si es necesario */
+    .chart-container { 
+        height: 300px; 
+    }
+}
+
+/* --- Pantallas Medianas (Tablets y Desktop: desde 768px) --- */
+@media (min-width: 768px) {
+    /* La altura del gráfico aumenta, como ya lo tenías */
+    .chart-container { 
+        height: 400px; 
+    }
+    
+    /* Nota: Los estilos por defecto del sidebar y main-content (ancho: 250px; margin-left: 250px;)
+       ya aplican para este tamaño y superiores, por lo que no es necesario reescribirlos aquí. */
+}   

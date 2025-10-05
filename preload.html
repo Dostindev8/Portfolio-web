@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dostinweb.net</title>
+</head>
+<body>
+    <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #1a4d4e, #1a7473);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+    .loader {
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .loader h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .spinner {
+      border: 4px solid rgba(255,255,255,0.3);
+      border-left-color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin: 0 auto;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <h1>Bienvenido...</h1>
+    <div class="spinner"></div>
+  </div>
+
+  <script>
+    // Simula la carga y redirige a la página principal después de 3 segundos
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 3000);
+  </script>
+</body>
+</html>
