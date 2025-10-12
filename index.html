@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dostinweb.net</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <link rel="icon" type="image/png" href="../Portfolio/images/icons.png">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      :root {
+        --color-primary: #00778b;
+        --color-accent: #ff6b6b;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f7f7ff;
+        -webkit-user-select: none; 
+        -moz-user-select: none; 
+        -ms-user-select: none; 
+        user-select: none;
+      }
+
+      .sidebar {
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(-100%);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .nav-link {
+        color: #3d352e;
+        border-radius: 0.75rem;
+        transition: all 0.2s ease;
+      }
+      .nav-link:hover {
+        background-color: rgba(0, 119, 139, 0.1);
+        color: var(--color-primary);
+        font-weight: 600;
+      }
+      .nav-link.active {
+        background-color: var(--color-primary);
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 4px 6px rgba(0, 119, 139, 0.3);
+      }
+
+      @media (min-width: 768px) {
+        .sidebar {
+          transform: translateX(0);
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+  <div id="google_translate_element">
+    <div
+      id="welcome-message"
+      class="fixed top-0 left-1/2 -translate-x-1/2 z-[100] hidden bg-[var(--color-primary)] text-white p-3 px-6 rounded-b-xl shadow-2xl opacity-0 transition-opacity duration-500 ease-out font-medium"
+    >
+      ¡Bienvenido! Aquí verás más sobre mí.
+    </div>
+    
+
+    <button
+      id="menu-toggle"
+      class="md:hidden fixed top-4 left-4 z-50 p-2 bg-white rounded-xl shadow-lg border border-gray-200 text-[var(--color-primary)] hover:scale-105 transition-transform"
+    >
+      <i class="fas fa-bars text-xl"></i>
+    </button>
+
+    <div class="flex min-h-screen">
+      <aside
+        id="sidebar"
+        class="sidebar fixed md:sticky top-0 left-0 w-64 h-full bg-white p-6 z-40 flex flex-col"
+      >
+        <div
+          class="flex md:flex-col items-center md:items-start justify-center md:justify-start flex-grow"
+        >
+          <div class="text-center mb-8 pt-4">
+            <img
+              src="https://i.ibb.co/NgjFkrHh/Dostin-Pages.png"
+              alt="Foto de Perfil DS"
+              class="rounded-full mx-auto mb-3 w-32 h-32 object-cover"
+            />
+            <h1 class="text-2xl font-black text-[#3D352E]">Dostin Santana</h1>
+            <br />
+            <p class="text-sm text-black-500">Arquitecto & Desarrollador</p>
+          </div>
+
+          <!-- Navegación -->
+          <nav id="nav-menu" class="flex flex-col gap-2 w-full">
+            <a href="#inicio" class="nav-link py-3 px-4 text-base active">
+              <i class="fas fa-rocket mr-3 w-5 text-center"></i>Inicio
+            </a>
+            <a href="#habilidades" class="nav-link py-3 px-4 text-base">
+              <i class="fas fa-code mr-3 w-5 text-center"></i>Habilidades
+            </a>
+            <a href="#proyectos" class="nav-link py-3 px-4 text-base">
+              <i class="fas fa-folder-open mr-3 w-5 text-center"></i>Proyectos
+            </a>
+            <a href="#contacto" class="nav-link py-3 px-4 text-base">
+              <i class="fas fa-envelope mr-3 w-5 text-center"></i>Contacto
+            </a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main id="main-content" class="md:ml-64 flex-grow p-6 md:p-12">
+        <!-- SECCIÓN INICIO -->
+        <section
+          id="inicio"
+          class="min-h-[80vh] flex flex-col justify-center items-start pt-16 md:pt-0"
+        >
+          <p class="text-xl font-medium text-[var(--color-primary)] mb-2">
+            ¡Hola, Soy Dostin!
+          </p>
+          <h2
+            class="text-5xl md:text-7xl font-extrabold tracking-tighter mt-2 mb-6 text-[#3D352E]"
+          >
+            Arquitecto Soluciones <br />
+            & Desarrollador Web.
+          </h2>
+          <p class="text-xl max-w-3xl text-black-600 mb-10">
+            Especializado en sitios web, aplicaciones y servicios, transformo
+            ideas complejas en experiencias digitales elegantes, estéticas y
+            sostenibles, priorizando la seguridad y la calidad en el servicio.
+          </p>
+          <a
+            href="https://github.com/Dostindev8?tab=repositories"
+            target="_blank"
+            class="bg-[var(--color-primary)] text-white font-bold py-3 px-10 rounded-full shadow-xl hover:bg-[#005F6F] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2"
+          >
+            <i class="fas fa-arrow-right"></i>
+            Ver Proyectos Destacados
+          </a>
+        </section>
+
+        <hr class="my-16 border-gray-200" />
+
+        <!-- SECCIÓN HABILIDADES -->
+        <section id="habilidades" class="py-10">
+          <h2 class="text-4xl font-bold mb-4 text-[#3D352E]">
+            Habilidades & Stack
+          </h2>
+          <p class="text-lg text-black-600 mb-12 max-w-3xl">
+            Una vista integral de las herramientas que utilizo para entregar
+            soluciones web, desde el diseño y estructura de la base de datos
+            hasta la interfaz del usuario.
+            <br />**Haz clic** en las categorías para ver los detalles.
+          </p>
+
+          <!-- Tags de Habilidades (Ahora con mejor diseño y clase 'active') -->
+          <div
+            class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-6xl mx-auto"
+          >
+            <!-- Frontend -->
+            <button
+              data-skill="frontend"
+              class="skill-tag flex flex-col items-center justify-center bg-white border-2 border-[var(--color-primary)] rounded-2xl shadow-lg py-6 px-4 text-center font-semibold text-[#3D352E] transition-all duration-300 hover:scale-[1.03] active-skill"
+            >
+              <i
+                class="fas fa-desktop text-3xl mb-2 text-[var(--color-primary)]"
+              ></i>
+              <span class="text-lg">Frontend</span>
+              <span class="text-sm text-gray-500 mt-1"
+                >(React / Angular / Next.js)</span
+              >
+            </button>
+
+            <!-- Backend -->
+            <button
+              data-skill="backend"
+              class="skill-tag flex flex-col items-center justify-center bg-white border border-gray-200 rounded-2xl shadow-lg py-6 px-4 text-center font-semibold text-[#3D352E] transition-all duration-300 hover:scale-[1.03] hover:border-[var(--color-primary)]"
+            >
+              <i
+                class="fas fa-server text-3xl mb-2 text-gray-400 group-hover:text-[var(--color-primary)]"
+              ></i>
+              <span class="text-lg">Backend</span>
+              <span class="text-sm text-gray-500 mt-1"
+                >(JavaScript / Python)</span
+              >
+            </button>
+
+            <!-- Database -->
+            <button
+              data-skill="database"
+              class="skill-tag flex flex-col items-center justify-center bg-white border border-gray-200 rounded-2xl shadow-lg py-6 px-4 text-center font-semibold text-[#3D352E] transition-all duration-300 hover:scale-[1.03] hover:border-[var(--color-primary)]"
+            >
+              <i
+                class="fas fa-database text-3xl mb-2 text-gray-400 group-hover:text-[var(--color-primary)]"
+              ></i>
+              <span class="text-lg">Bases de Datos</span>
+              <span class="text-sm text-gray-500 mt-1">(MongoDB / MySQL)</span>
+            </button>
+
+            <!-- DevOps -->
+            <button
+              data-skill="devops"
+              class="skill-tag flex flex-col items-center justify-center bg-white border border-gray-200 rounded-2xl shadow-lg py-6 px-4 text-center font-semibold text-[#3D352E] transition-all duration-300 hover:scale-[1.03] hover:border-[var(--color-primary)]"
+            >
+              <i
+                class="fas fa-cloud text-3xl mb-2 text-gray-400 group-hover:text-[var(--color-primary)]"
+              ></i>
+              <span class="text-lg">DevOps & Cloud</span>
+              <span class="text-sm text-gray-500 mt-1"
+                >(Git / Docker / CI/CD)</span
+              >
+            </button>
+          </div>
+
+          <!-- Detalle de Habilidades -->
+          <div
+            id="skill-detail"
+            class="bg-white p-8 rounded-2xl shadow-2xl border-t-8 border-[var(--color-primary)] transition-all duration-500 max-w-4xl mx-auto"
+          >
+            <h3 class="text-3xl font-bold mb-3 text-[#3D352E]" id="skill-title">
+              Frontend Development (Experiencia de Usuario)
+            </h3>
+            <p class="text-black-700 leading-relaxed" id="skill-description">
+              Especialista en la creación de interfaces de usuario interactivas
+              y rápidas, utilizo React (Hooks, Context API), con enfoque en
+              Next.js para renderizado del lado del servidor (SSR) y estático
+              (SSG). Uso de Tailwind CSS, para un diseño responsivo y estético.
+            </p>
+          </div>
+        </section>
+
+        <hr class="my-16 border-black-200" />
+
+        <!-- SECCIÓN PROYECTOS -->
+        <section id="proyectos" class="py-10">
+          <h2 class="text-4xl font-bold mb-4 text-[#3D352E]">
+            Portafolio de Proyectos
+          </h2>
+          <p class="text-lg text-black-600 mb-12 max-w-3xl">
+            Cada proyecto es un caso de estudio en arquitectura de información,
+            rendimiento, seguridad y diseño centrado en el usuario para tener
+            una buena experiencia de usuario.
+          </p>
+
+          <!-- Lista de Proyectos -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+          >
+            <!-- Proyecto 1 (E-Commerce) -->
+            <div
+              data-project="1"
+              data-name="E-Commerce Web Shop"
+              data-perf="98"
+              data-acc="95"
+              data-best="90"
+              class="project-card bg-white p-6 rounded-2xl shadow-xl border-2 border-[var(--color-primary)] cursor-pointer transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] project-active"
+            >
+              <img
+                src="https://i.ibb.co/4gDKF4JK/Ecommerce.png"
+                alt="E-Commerce API"
+                class="rounded-lg mb-4 w-full h-auto object-cover"
+              />
+              <h3 class="text-xl font-bold text-[#3D352E] mb-1">
+                E-Commerce Web Shop
+              </h3>
+              <p class="text-black-500 text-sm">
+                React, Vite, Axios, Node.js, Tailwindcss, MongoDB.
+              </p>
+            </div>
+
+            <!-- Proyecto 2 (Chat-APP) -->
+            <div
+              data-project="2"
+              data-name="Chat-APP"
+              data-perf="90"
+              data-acc="98"
+              data-best="92"
+              class="project-card bg-white p-6 rounded-2xl shadow-xl border-2 border-gray-100 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:border-[var(--color-primary)]"
+            >
+              <img
+                src="https://i.ibb.co/Zp9KDHfG/Chatapp.png"
+                alt="Dashboard Analitics"
+                class="rounded-lg mb-4 w-full h-auto object-cover"
+              />
+              <h3 class="text-xl font-bold text-[#3D352E] mb-1">Chat-APP</h3>
+              <p class="text-black-500 text-sm">
+                React, Vite, Express, MongoDB, Tailwindcss, Git.
+              </p>
+            </div>
+
+            <!-- Proyecto 3 (UniversityRD) -->
+            <div
+              data-project="3"
+              data-name="UniversityRD SPA"
+              data-perf="94"
+              data-acc="91"
+              data-best="96"
+              class="project-card bg-white p-6 rounded-2xl shadow-xl border-2 border-gray-100 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:border-[var(--color-primary)]"
+            >
+              <img
+                src="https://i.ibb.co/s9jqPLqJ/Univesity-RD.png"
+                alt="Blog RD MERN"
+                class="rounded-lg mb-4 w-full h-auto object-cover"
+              />
+              <h3 class="text-xl font-bold text-[#3D352E] mb-1">
+                UniversityRD
+              </h3>
+              <p class="text-black-500 text-sm">
+                SPA universitaria, utilizando el Stack MERN JS.
+              </p>
+            </div>
+          </div>
+
+          <!-- Gráfico de Métricas (Sección Dinámica) -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-2xl border-t-8 border-[var(--color-primary)] mt-10"
+          >
+            <h3 class="text-3xl font-bold mb-4 text-[#3D352E]" id="chart-title">
+              Métricas de Rendimiento
+            </h3>
+            <div class="flex flex-col lg:flex-row gap-8 items-center">
+              <div class="lg:w-1/2 w-full order-2 lg:order-1">
+                <p class="text-black-600 mb-6 text-base">
+                  Análisis simulado del rendimiento técnico del proyecto
+                  seleccionado, basado en estándares de calidad Lighthouse Core
+                  Web Vitals, Las categorías son: Performance velocidad,
+                  Accessibility accesibilidad, y Best Practices mejores
+                  prácticas de código.
+                </p>
+                <div class="space-y-4">
+                  <!-- Performance Bar -->
+                  <div>
+                    <div class="flex justify-between font-bold text-gray-700">
+                      <span>Performance</span><span id="perf-score">98%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                      <div
+                        id="perf-bar"
+                        class="bg-[var(--color-primary)] h-3 rounded-full transition-all duration-700 ease-out"
+                        style="width: 98%"
+                      ></div>
+                    </div>
+                  </div>
+
+                  <!-- Accessibility Bar -->
+                  <div>
+                    <div class="flex justify-between font-bold text-gray-700">
+                      <span>Accessibility</span><span id="acc-score">95%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                      <div
+                        id="acc-bar"
+                        class="bg-green-500 h-3 rounded-full transition-all duration-700 ease-out"
+                        style="width: 95%"
+                      ></div>
+                    </div>
+                  </div>
+
+                  <!-- Best Practices Bar -->
+                  <div>
+                    <div class="flex justify-between font-bold text-gray-700">
+                      <span>Best Practices</span
+                      ><span id="best-score">90%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                      <div
+                        id="best-bar"
+                        class="bg-amber-500 h-3 rounded-full transition-all duration-700 ease-out"
+                        style="width: 90%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:w-1/2 w-full order-1 lg:order-2">
+                <div class="max-w-xs mx-auto">
+                  <canvas id="projectMetricsChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="my-16 border-gray-200" />
+
+        <section id="contacto" class="py-10">
+          <h2 class="text-4xl font-bold mb-4 text-[#3D352E]">
+            Hablemos de tu Proyecto
+          </h2>
+          <p class="text-lg text-black-600 mb-12 max-w-3xl">
+            Si buscas soluciones escalables, un diseño elegante y una ejecución
+            impecable, estoy listo para colaborar.
+          </p>
+
+          <div
+            class="bg-white p-8 rounded-2xl shadow-2xl border-t-8 border-[var(--color-primary)] max-w-xl"
+          >
+            <form
+              action="mailto:Dostinsantana8@gmail.com"
+              method="post"
+              enctype="text/plain"
+              id="contactForm"
+            >
+              <div class="mb-4">
+                <label
+                  for="name"
+                  class="block text-sm font-semibold text-gray-700 mb-1"
+                  >Nombre Completo</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="Nombre"
+                  class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/50 transition-colors"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  for="email"
+                  class="block text-sm font-semibold text-gray-700 mb-1"
+                  >Correo Electrónico</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="Correo"
+                  class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/50 transition-colors"
+                  required
+                />
+              </div>
+              <div class="mb-6">
+                <label
+                  for="message"
+                  class="block text-sm font-semibold text-gray-700 mb-1"
+                  >Mensaje (Detalla tu proyecto)</label
+                >
+                <textarea
+                  id="message"
+                  name="Mensaje"
+                  rows="4"
+                  class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/50 transition-colors"
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-[var(--color-primary)] text-white font-bold py-3 rounded-lg shadow-lg hover:bg-[black] transition-all duration-300 transform hover:scale-[1.01] flex items-center justify-center gap-2"
+              >
+                <i class="fas fa-paper-plane"></i>
+                Enviar Mensaje
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <footer class="text-center py-10 mt-16 border-t border-gray-200">
+          <div class="flex justify-center space-x-6 mb-6">
+            <a
+              href="https://github.com/Dostindev8"
+              target="_blank"
+              class="text-black-500 hover:text-[var(--color-primary)] transition-colors text-2xl"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/dostin-santana-0138b6245/"
+              target="_blank"
+              class="text-black-500 hover:text-[var(--color-primary)] transition-colors text-2xl"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+          <p class="text-sm text-black-500">
+            Diseñado y desarrollado por Dostin Santana. © 2025.
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    <a
+      href="https://wa.me/18494737963?text=Hola%20estoy%20interesado%20en%20tu%20servicio%20de%20desarrollo%20web."
+      target="_blank"
+      class="fixed bottom-6 right-6 z-50 p-4 bg-green-500 text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-110 hover:bg-green-600"
+      aria-label="Contactar por WhatsApp"
+    >
+      <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <script>
+      const skillData = {
+        frontend: {
+          title: "Frontend Development (Experiencia de Usuario)",
+          description:
+            "Especialista en la creación de interfaces de usuario interactivas y rápidas. Dominio de React (Hooks, Context API) con enfoque en Next.js para renderizado del lado del servidor (SSR) y estático (SSG). Uso de Tailwind CSS para un diseño responsivo y estético.",
+        },
+        backend: {
+          title: "Backend Development (Lógica y Servicios)",
+          description:
+            "Experiencia en la construcción de APIs escalables utilizando Node.js/Express con JavaScript/TypeScript, Diseño de servicios de alto rendimiento y fácil mantenimiento.",
+        },
+        database: {
+          title: "Bases de Datos & Almacenamiento",
+          description:
+            "Manejo de bases de datos (MongoDB, Firestore) para flexibilidad y escalabilidad, y MySQL para estructuras relacionales complejas, Optimización de consultas y modelado de datos.",
+        },
+        devops: {
+          title: "DevOps & Cloud Infrastructure",
+          description:
+            "Implementación de flujos de trabajo de Integración Continua/Despliegue Continuo (**CI/CD**) para asegurar el despliegue y mantenimiento eficiente de las aplicaciones.",
+        },
+      };
+
+      // 2. Variables y Inicialización del Gráfico
+      let metricsChart;
+
+      function initializeChart(data) {
+        const ctx = document
+          .getElementById("projectMetricsChart")
+          .getContext("2d");
+        if (metricsChart) {
+          metricsChart.destroy();
+        }
+
+        const dataPoints = [data.perf || 0, data.acc || 0, data.best || 0];
+
+        const primaryColor = getComputedStyle(document.documentElement)
+          .getPropertyValue("--color-primary")
+          .trim();
+        const accentColor = getComputedStyle(document.documentElement)
+          .getPropertyValue("--color-accent")
+          .trim();
+
+        metricsChart = new Chart(ctx, {
+          type: "radar",
+          data: {
+            labels: ["Performance", "Accessibility", "Best Practices"],
+            datasets: [
+              {
+                label: "Puntuación (%)",
+                data: dataPoints,
+                backgroundColor: primaryColor + "1A",
+                borderColor: primaryColor,
+                pointBackgroundColor: primaryColor,
+                pointBorderColor: "#fff",
+                pointHoverBackgroundColor: "#fff",
+                pointHoverBorderColor: primaryColor,
+                borderWidth: 2,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+              r: {
+                angleLines: {
+                  color: "#e5e7eb",
+                },
+                grid: {
+                  color: "#e5e7eb",
+                },
+                pointLabels: {
+                  font: {
+                    size: 14,
+                    family: "'Inter', sans-serif",
+                    weight: "bold",
+                  },
+                  color: "#3D352E",
+                },
+                suggestedMin: 0,
+                suggestedMax: 100,
+                ticks: {
+                  stepSize: 25,
+                  backdropColor: "transparent",
+                  color: "#9ca3af", 
+                  font: {
+                    family: "'Inter', sans-serif",
+                  },
+                },
+              },
+            },
+            plugins: {
+              legend: {
+                display: false,
+              },
+              tooltip: {
+                callbacks: {
+                  label: function (context) {
+                    let label = context.dataset.label || "";
+                    if (label) {
+                      label += ": ";
+                    }
+                    if (context.parsed.r !== null) {
+                      label += context.parsed.r + "%";
+                    }
+                    return label;
+                  },
+                },
+              },
+            },
+          },
+        });
+      }
+
+      function setupNavigation() {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll("main section");
+        const menuToggle = document.getElementById("menu-toggle");
+        const sidebar = document.getElementById("sidebar");
+
+        menuToggle.addEventListener("click", () => {
+          sidebar.classList.toggle("open");
+          menuToggle.querySelector("i").classList.toggle("fa-bars");
+          menuToggle.querySelector("i").classList.toggle("fa-times");
+        });
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            document.querySelector(link.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+
+            if (window.innerWidth < 768) {
+              sidebar.classList.remove("open");
+              menuToggle.querySelector("i").classList.add("fa-bars");
+              menuToggle.querySelector("i").classList.remove("fa-times");
+            }
+          });
+        });
+
+
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px 0px -50% 0px", 
+          threshold: 0,
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navLinks.forEach((link) =>
+                link.classList.remove(
+                  "active",
+                  "bg-[var(--color-primary)]",
+                  "text-white"
+                )
+              );
+
+              const targetLink = document.querySelector(
+                `.nav-link[href="#${entry.target.id}"]`
+              );
+              if (targetLink) {
+                targetLink.classList.add(
+                  "active",
+                  "bg-[var(--color-primary)]",
+                  "text-white"
+                );
+              }
+            }
+          });
+        }, observerOptions);
+
+        sections.forEach((section) => {
+          sectionObserver.observe(section);
+        });
+      }
+
+      function setupSkillTags() {
+        const tags = document.querySelectorAll(".skill-tag");
+        const titleEl = document.getElementById("skill-title");
+        const descriptionEl = document.getElementById("skill-description");
+        const primaryColor = getComputedStyle(document.documentElement)
+          .getPropertyValue("--color-primary")
+          .trim();
+
+        tags.forEach((tag) => {
+          tag.addEventListener("click", () => {
+  
+            const skillKey = tag.getAttribute("data-skill");
+            const data = skillData[skillKey];
+
+            if (data) {
+             
+              titleEl.innerHTML = data.title;
+              descriptionEl.innerHTML = data.description;
+
+              tags.forEach((t) => {
+                t.classList.remove(
+                  "active-skill",
+                  "border-2",
+                  `border-[var(--color-primary)]`
+                );
+                t.classList.add("border", "border-gray-200");
+                
+                const icon = t.querySelector("i");
+                if (icon) {
+                  icon.classList.remove(`text-[var(--color-primary)]`);
+                  icon.classList.add("text-gray-400");
+                }
+              });
+
+              tag.classList.add(
+                "active-skill",
+                "border-2",
+                `border-[var(--color-primary)]`
+              );
+              tag.classList.remove("border", "border-gray-200");
+              const activeIcon = tag.querySelector("i");
+              if (activeIcon) {
+                activeIcon.classList.add(`text-[var(--color-primary)]`);
+                activeIcon.classList.remove("text-gray-400");
+              }
+            }
+          });
+        });
+      }
+
+      function setupProjectCards() {
+        const cards = document.querySelectorAll(".project-card");
+        const titleEl = document.getElementById("chart-title");
+        const perfBar = document.getElementById("perf-bar");
+        const accBar = document.getElementById("acc-bar");
+        const bestBar = document.getElementById("best-bar");
+        const perfScore = document.getElementById("perf-score");
+        const accScore = document.getElementById("acc-score");
+        const bestScore = document.getElementById("best-score");
+
+        function updateMetrics(card) {
+          const name = card.getAttribute("data-name");
+          const perf = parseInt(card.getAttribute("data-perf"));
+          const acc = parseInt(card.getAttribute("data-acc"));
+          const best = parseInt(card.getAttribute("data-best"));
+
+          titleEl.textContent = `Métricas de Rendimiento`;
+
+          perfBar.style.width = `${perf}%`;
+          accBar.style.width = `${acc}%`;
+          bestBar.style.width = `${best}%`;
+
+          perfScore.textContent = `${perf}%`;
+          accScore.textContent = `${acc}%`;
+          bestScore.textContent = `${best}%`;
+
+          if (metricsChart) {
+            metricsChart.data.datasets[0].data = [perf, acc, best];
+            metricsChart.update();
+          }
+        }
+
+        cards.forEach((card) => {
+          card.addEventListener("click", () => {
+           
+            cards.forEach((c) =>
+              c.classList.remove(
+                "project-active",
+                "border-[var(--color-accent)]"
+              )
+            );
+            c.classList.add("border-gray-100");
+
+            card.classList.add(
+              "project-active",
+              "border-[var(--color-accent)]"
+            );
+            card.classList.remove("border-gray-100");
+
+            updateMetrics(card);
+          });
+        });
+
+        const initialProject = cards[0];
+        const initialData = {
+          perf: parseInt(initialProject.getAttribute("data-perf")),
+          acc: parseInt(initialProject.getAttribute("data-acc")),
+          best: parseInt(initialProject.getAttribute("data-best")),
+        };
+        initializeChart(initialData);
+        updateMetrics(initialProject);
+      }
+
+      function showWelcomeMessage() {
+        const welcomeMessage = document.getElementById("welcome-message");
+        welcomeMessage.classList.remove("hidden");
+
+        setTimeout(() => {
+          welcomeMessage.classList.add("opacity-100");
+        }, 100);
+
+        setTimeout(() => {
+          welcomeMessage.classList.remove("opacity-100");
+          setTimeout(() => {
+            welcomeMessage.classList.add("hidden");
+          }, 500);
+        }, 3000);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        setupNavigation();
+        setupSkillTags();
+        setupProjectCards();
+        showWelcomeMessage();
+      });
+
+      function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es', 
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+    </script>
+  </div>
+  </body>
+</html>
